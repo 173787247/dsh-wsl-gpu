@@ -1,0 +1,21 @@
+{
+  "name": "dsh-wsl-gpu",
+  "version": "0.1.0",
+  "description": "DeepSeek Harness tool: probe nvidia-smi / GPU visibility inside WSL.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/173787247/dsh-wsl-gpu.git"
+  },
+  "bugs": {
+    "url": "https://github.com/173787247/dsh-wsl-gpu/issues"
+  },
+  "homepage": "https://github.com/173787247/dsh-wsl-gpu#readme",
+  "type": "module",
+  "main": "index.js",
+  "engines": { "node": ">=18" },
+  "scripts": { "test": "node --test test/gpu.test.js" },
+  "files": ["index.js", "lib", "cordis.patch.yml", "README.md", "LICENSE"],
+  "keywords": ["dsh-plugin", "deepseek-harness", "wsl", "gpu"],
+  "dsh": { "bundle": { "patch": "./cordis.patch.yml" } }
+}

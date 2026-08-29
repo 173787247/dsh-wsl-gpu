@@ -1,0 +1,5 @@
+- insert:
+    - id: dsh-wsl-gpu
+      name: dsh-wsl-gpu
+      config:
+        timeoutMs: 20000
