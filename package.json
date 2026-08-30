@@ -15,7 +15,7 @@
   "main": "index.js",
   "engines": { "node": ">=18" },
   "scripts": { "test": "node --test test/gpu.test.js" },
-  "files": ["index.js", "lib", "cordis.patch.yml", "README.md", "LICENSE"],
+  "files": ["index.js", "lib", "cordis.patch.yml", "README.md", "README.zh.md", "LICENSE"],
   "keywords": ["dsh-plugin", "deepseek-harness", "wsl", "gpu"],
   "dsh": { "bundle": { "patch": "./cordis.patch.yml" } }
 }
