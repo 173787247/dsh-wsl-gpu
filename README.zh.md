@@ -1,26 +1,31 @@
 # dsh-wsl-gpu
+
 > **套件安装：** 见 [dsh-wsl-kit](https://github.com/173787247/dsh-wsl-kit)。推荐 `KIT_SET=daily` | `llm` | `github` | `full`。故障树：[TROUBLESHOOTING.zh.md](https://github.com/173787247/dsh-wsl-kit/blob/master/docs/TROUBLESHOOTING.zh.md)。
 
-
-DeepSeek Harness 工具：**`gpu_doctor`** — 探测 `nvidia-smi`，并就 WSL 内 GPU / CUDA 可见性给出建议。
-
-属于 **[dsh-wsl-kit](https://github.com/173787247/dsh-wsl-kit)**。
+DeepSeek Harness 工具：**`gpu_doctor`** — WSL 里查 `nvidia-smi`、显存压力、Blackwell/5080 提示，以及 Ollama / vLLM / Unsloth Desktop 是否抢同一张卡。
 
 [English → README.md](./README.md)
 
----
-
 ## 为什么需要
 
-本地推理（PyTorch、WSL 里的 Ollama 等）需要 Windows NVIDIA 驱动把 GPU 暴露给 WSL2。本工具检查 `nvidia-smi` 并给出可执行建议（**不要**在发行版里再装冲突的 Linux NVIDIA 驱动；必要时 `wsl --shutdown`）。
+本机推理靠 **Windows NVIDIA 驱动**把 GPU 透进 WSL2。一张约 16GB（如 5080）上同时开 Ollama + llama-server + vLLM 很容易 OOM。本工具一次给出可见性、显存和推理端口占用。
 
 ## 安装
 
 ```sh
+curl -fsSL https://raw.githubusercontent.com/173787247/dsh-wsl-kit/master/install.sh | KIT_SET=llm bash
+# 或：
 dsh plugin --profile web add github:173787247/dsh-wsl-gpu
 ```
 
-驱动更新后或 CUDA 编译失败时，让 Agent「跑一下 gpu_doctor」。
+驱动更新、CUDA 编不过、再开大 GGUF 之前，让 agent 跑 `gpu_doctor`。
+
+## 你会看到
+
+- 解析后的 GPU：名称、驱动、已用/总显存、利用率、算力版本
+- Blackwell / RTX 50 提示（`sm_120`、CUDA 12.8+/13.x）
+- 推理端口：`11434` / `1234` / `8000` / `8080`
+- 下一步可接 `host_reach`、`docker_doctor focus=vllm`
 
 ## 配置
 
@@ -29,6 +34,8 @@ dsh plugin --profile web add github:173787247/dsh-wsl-gpu
   name: dsh-wsl-gpu
   config:
     timeoutMs: 20000
+    probeTimeoutMs: 1200
+    probeInference: true
 ```
 
 ## 测试
