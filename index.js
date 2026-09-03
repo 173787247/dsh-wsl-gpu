@@ -5,6 +5,7 @@ import {
   probeInferencePorts,
   runNvidiaQuery,
   runNvidiaSmi,
+  toLosslessJson,
 } from "./lib/gpu.js";
 
 export const name = "dsh-wsl-gpu";
@@ -61,7 +62,7 @@ export function apply(ctx, config = {}) {
       const report = { wsl, smi, query, inference };
       report.advice = buildGpuAdvice(report);
       report.ok = Boolean(smi.ok);
-      return report;
+      return toLosslessJson(report);
     },
     presentCall: () => ({ card: "generic", title: "GPU doctor" }),
     presentResult: (_args, result) => (

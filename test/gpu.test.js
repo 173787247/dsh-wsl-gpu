@@ -124,3 +124,28 @@ describe("formatGpuReport", () => {
     assert.match(text, /ok tip/);
   });
 });
+
+describe("toLosslessJson", () => {
+  it("strips NaN/undefined so JSON round-trips", async () => {
+    const { toLosslessJson } = await import("../lib/gpu.js");
+    const dirty = {
+      ok: true,
+      n: Number.NaN,
+      miss: undefined,
+      nested: [{ open: true, error: undefined, util: Infinity }],
+    };
+    const clean = toLosslessJson(dirty);
+    const again = JSON.parse(JSON.stringify(clean));
+    assert.deepEqual(clean, again);
+    assert.equal(clean.n, null);
+    assert.equal(clean.miss, null);
+    assert.equal(clean.nested[0].util, null);
+  });
+
+  it("parseGpuCsv never emits NaN", () => {
+    const [g] = parseGpuCsv("GPU, 1.0, N/A, N/A, N/A, N/A, 12.0");
+    assert.equal(g.memoryTotalMiB, null);
+    assert.equal(g.utilizationGpu, null);
+    assert.equal(g.vramPressure, "unknown");
+  });
+});

@@ -1,6 +1,6 @@
 {
   "name": "dsh-wsl-gpu",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "DeepSeek Harness tool: GPU/VRAM doctor for WSL — nvidia-smi, Blackwell hints, inference port contention.",
   "license": "MIT",
   "repository": {

@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.1
+
+- Fix dsh `value is not lossless JSON`: strip `NaN`/`undefined` from tool output (TCP probe rows, numeric fields).
+
 ## 0.2.0
 
 - Richer `nvidia-smi` query: VRAM used/free, util, compute capability.
