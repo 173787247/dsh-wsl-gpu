@@ -1,3 +1,7 @@
+## 0.2.2
+
+- Advice: pair with host_reach / switch to deepseek-flash when local idle-timeout.
+
 # Changelog
 
 ## 0.2.1

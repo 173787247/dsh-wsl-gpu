@@ -1,7 +1,7 @@
 {
   "name": "dsh-wsl-gpu",
-  "version": "0.2.1",
-  "description": "DeepSeek Harness tool: GPU/VRAM doctor for WSL — nvidia-smi, Blackwell hints, inference port contention.",
+  "version": "0.2.2",
+  "description": "DeepSeek Harness tool: GPU/VRAM doctor for WSL \u2014 nvidia-smi, Blackwell hints, inference port contention.",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -13,11 +13,33 @@
   "homepage": "https://github.com/173787247/dsh-wsl-gpu#readme",
   "type": "module",
   "main": "index.js",
-  "engines": { "node": ">=18" },
-  "scripts": { "test": "node --test test/gpu.test.js" },
-  "files": ["index.js", "lib", "cordis.patch.yml", "README.md", "README.zh.md", "LICENSE",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test test/gpu.test.js"
+  },
+  "files": [
+    "index.js",
+    "lib",
+    "cordis.patch.yml",
+    "README.md",
+    "README.zh.md",
+    "LICENSE",
     "CHANGELOG.md",
-    "CONTRIBUTING.md"],
-  "keywords": ["dsh-plugin", "deepseek-harness", "wsl", "gpu", "blackwell", "cuda"],
-  "dsh": { "bundle": { "patch": "./cordis.patch.yml" } }
+    "CONTRIBUTING.md"
+  ],
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "wsl",
+    "gpu",
+    "blackwell",
+    "cuda"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
 }
