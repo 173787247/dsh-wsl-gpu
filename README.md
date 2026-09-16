@@ -8,12 +8,24 @@ Part of **[dsh-wsl-kit](https://github.com/173787247/dsh-wsl-kit)**.
 
 [中文说明 → README.zh.md](./README.zh.md)
 
+## Where it sits
+
+Reports nvidia-smi, Blackwell hints, and whether an inference port is already taken.
+
+```mermaid
+flowchart LR
+  agent["dsh agent"] --> tool["gpu_doctor"] --> gpu["nvidia-smi / VRAM"]
+```
+
+Suite diagram and version snapshot: [dsh-wsl-kit](https://github.com/173787247/dsh-wsl-kit#how-the-pieces-fit). This plugin is **0.2.2** (full; also in llm). Do not copy that matrix into this README.
+
+
 ---
 ## Compatibility
 
 | Field | Value |
 |-------|-------|
-| **Plugin** | `dsh-wsl-gpu` **0.2.1** |
+| **Plugin** | `dsh-wsl-gpu` **0.2.2** |
 | **Minimum dsh** | ≥ **0.1.2** (web UI one-shot `?token=` on Windows relay `:3081`) |
 | **Latest verified** | See [dsh-wsl-kit Compatibility](https://github.com/173787247/dsh-wsl-kit#compatibility-2026-09) (currently **`0.1.5-rc.1`**) — single source of truth for the suite |
 | **Kit set** | `llm` / `full` (some also useful alone) |

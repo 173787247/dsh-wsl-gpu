@@ -6,11 +6,23 @@ DeepSeek Harness 工具：**`gpu_doctor`** — WSL 里查 `nvidia-smi`、显存�
 
 [English → README.md](./README.md)
 
+## 在套件里的位置
+
+报告 nvidia-smi、Blackwell 提示，以及推理端口是否已被占用。
+
+```mermaid
+flowchart LR
+  agent["dsh agent"] --> tool["gpu_doctor"] --> gpu["nvidia-smi / 显存"]
+```
+
+整套关系图和版本快照：[dsh-wsl-kit 中文说明](https://github.com/173787247/dsh-wsl-kit/blob/master/README.zh.md)。本插件是 **0.2.2**（full，也在 llm）。不要把那份总表抄进本 README。
+
+
 ## 兼容性
 
 | 项 | 值 |
 |----|----|
-| **插件** | `dsh-wsl-gpu` **0.2.1** |
+| **插件** | `dsh-wsl-gpu` **0.2.2** |
 | **最低 dsh** | ≥ **0.1.2**（Windows 中继 `:3081` 一次性 `?token=`） |
 | **最新验证** | 以 [dsh-wsl-kit 兼容性](https://github.com/173787247/dsh-wsl-kit#compatibility-2026-09) 为准（当前 **`0.1.5-rc.1`**）— 套件唯一真源 |
 | **套件档位** | `llm` / `full`（也可单独装） |
